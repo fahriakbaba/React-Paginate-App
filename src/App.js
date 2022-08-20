@@ -12,7 +12,7 @@ function App() {
   React.useEffect(() => {
     setTimeout( () => {
       fetchData();
-    },2000)
+    },1500)
   }, []);
 
   const fetchData = async () => {
