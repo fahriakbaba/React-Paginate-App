@@ -2,7 +2,7 @@ import React from "react";
 
 function App() {
   const [list, setList] = React.useState([]);
-  const [postPerPage] = React.useState(12);
+  const [postPerPage] = React.useState(10);
   const [pageNumber, setPageNumber] = React.useState(5);
   const [loading, setLoading] = React.useState(true);
 
@@ -33,8 +33,8 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <h4>pagination react app </h4>
+    <div className="container mt-5">
+      <h4 className="text-capitalize text-center lead fs-3">my pagination page</h4>
 
     </div>
   );
