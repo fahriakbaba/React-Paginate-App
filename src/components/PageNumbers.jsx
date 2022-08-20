@@ -10,7 +10,7 @@ function PageNumbers({ list, postPerPage, setPageNumber }) {
   console.log("pagenumbers: ", numberList);
 
   return (
-    <section className="d-flex justify-content-center">
+    <section className="d-flex justify-content-center mt-3">
       <nav aria-label="Page navigation example">
         <ul className="pagination">
           <li className="page-item">
@@ -18,15 +18,10 @@ function PageNumbers({ list, postPerPage, setPageNumber }) {
               Previous
             </a>
           </li>
-          {/* <li className="page-item">
-            <a className="page-link" href="#7">
-              1
-            </a>
-          </li> */}
           {numberList.map((num) => {
             return (
               <li className="page-item">
-                <a className="page-link" href="#7">
+                <a className="page-link" href="#/" onClick={() => setPageNumber(num)}>
                   {num}
                 </a>
               </li>
