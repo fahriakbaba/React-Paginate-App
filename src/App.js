@@ -1,23 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
 function App() {
+  const [list, setList] = React.useState([]);
+  const [postPerPage] = React.useState(12);
+  const [pageNumber, setPageNumber] = React.useState(5);
+  const [loading, setLoading] = React.useState(true);
+
+  console.log(list);
+
+  React.useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch("https://jsonplaceholder.typicode.com/comments");
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error("something goes wrong!");
+      }
+      setList(data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  }
+
+  if (loading) {
+    return <h1>Loading...</h1>
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h4>pagination react app </h4>
+
     </div>
   );
 }
