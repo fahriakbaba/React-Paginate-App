@@ -6,12 +6,12 @@ function Post({postPerPage, pageNumber,list}) {
     const post = list.slice(firstIndexOf, lastIndexOf);
   
   return (
-    <ul class="list-group mt-3">
+    <ul className="list-group mt-3">
       {post.map((item) => {
         return (
           <li key={item.id} className="list-group-item list-group-item-action">
-            <h6 className="text-capitalize">{item.name}</h6>
-            <p>{item.email}</p>
+            <h6 className="text-capitalize text-success">{item.name}</h6>
+            <p className="text-muted">{item.email}</p>
             <p>{item.body}</p>
           </li>
         );

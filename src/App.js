@@ -1,14 +1,13 @@
 import React from "react";
 import PageNumbers from "./components/PageNumbers";
 import Post from "./components/Post";
+import Loading from "./components/Loading";
 
 function App() {
   const [list, setList] = React.useState([]);
   const [postPerPage] = React.useState(45);
   const [pageNumber, setPageNumber] = React.useState(5);
   const [loading, setLoading] = React.useState(true);
-
-  console.log(list);
 
   React.useEffect(() => {
     setTimeout( () => {
@@ -34,12 +33,12 @@ function App() {
 
 
   if (loading) {
-    return <h1>Loading...</h1>
+    return <Loading />
   }
 
   return (
     <div className="container mt-5">
-      <h4 className="text-capitalize text-center lead fs-3">my pagination page</h4>
+      <h4 className="text-capitalize text-center lead fs-3 fw-bold text-primary mb-4">my pagination page</h4>
       <PageNumbers list={list} postPerPage={postPerPage} setPageNumber={setPageNumber} />
       <Post pageNumber={pageNumber} postPerPage={postPerPage} list={list} />
     </div>

@@ -7,30 +7,48 @@ function PageNumbers({ list, postPerPage, setPageNumber }) {
     numberList.push(i);
   }
 
-  console.log("pagenumbers: ", numberList);
+  const decreasePageNumber = () => {
+    setPageNumber(oldNumber => {
+      let index = oldNumber -1;
+      if(index<=0) {
+        index = numberList[numberList.length-1];
+      }
+      return index;
+    })
+  }
+  
+  const increasePageNumber = () => {
+    setPageNumber(oldNumer => {
+      let index = oldNumer + 1;
+      if(index > (numberList.length)) {
+        index = 1;
+      }
+      return index;
+    })
+  }
 
   return (
     <section className="d-flex justify-content-center mt-3">
       <nav aria-label="Page navigation example">
         <ul className="pagination">
           <li className="page-item">
-            <a className="page-link" href="#/">
+            <button className="page-link" onClick={decreasePageNumber}>
               Previous
-            </a>
+            </button>
           </li>
-          {numberList.map((num) => {
+          {numberList.map((num, i) => {
             return (
-              <li className="page-item">
-                <a className="page-link" href="#/" onClick={() => setPageNumber(num)}>
+              <li key={i} className="page-item">
+                <button type="button" className="page-link" onClick={() => setPageNumber(num)}>
                   {num}
-                </a>
+                </button>
               </li>
             );
           })}
           <li className="page-item">
-            <a className="page-link" href="#/">
+            <button className="page-link" onClick={increasePageNumber}>
               Next
-            </a>
+            </button>
           </li>
         </ul>
       </nav>
