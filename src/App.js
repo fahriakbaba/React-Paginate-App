@@ -1,8 +1,9 @@
 import React from "react";
+import PageNumbers from "./components/PageNumbers";
 
 function App() {
   const [list, setList] = React.useState([]);
-  const [postPerPage] = React.useState(10);
+  const [postPerPage] = React.useState(50);
   const [pageNumber, setPageNumber] = React.useState(5);
   const [loading, setLoading] = React.useState(true);
 
@@ -32,10 +33,15 @@ function App() {
     return <h1>Loading...</h1>
   }
 
+  const lastIndexOf = postPerPage* pageNumber;
+  const firstIndexOf = lastIndexOf - postPerPage;
+  const newList = list.slice(firstIndexOf, lastIndexOf);
+   
+
   return (
     <div className="container mt-5">
       <h4 className="text-capitalize text-center lead fs-3">my pagination page</h4>
-
+      <PageNumbers list={list} postPerPage={postPerPage} setPageNumber={setPageNumber} />
     </div>
   );
 }
